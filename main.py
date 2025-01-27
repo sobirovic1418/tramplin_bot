@@ -13,6 +13,11 @@ async def begin(message:types.Message):
     await message.answer(f"Assalomu alaykum{message.from_user.full_name}\nbotimizga xush kelibsiz!!!",
                          reply_markup=start_btn)
 
+@dp.message_handler(commands=["help"])
+async def yordam(message:types.Message):
+    await message.answer(f"Hurmatli{message.from_user.full_name}\n📝 Bizning bu botimizda siz MY SCHOOL o'quv markazimiz haqida ma'lumotlarga ega bo'lasiz\n"
+                         f"🤩 Ko'proq ma'lumotga ega bo'lishni istasangiz unda tezroq /start/ tugmasini bosing!!!")
+
 @dp.message_handler(text=["👨‍💻 My school"])
 async def school_fun(message:types.Message):
     img = open("static/img/my school.jpg", 'rb')
