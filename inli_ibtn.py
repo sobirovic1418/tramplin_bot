@@ -15,7 +15,7 @@ kurs_ibtn=InlineKeyboardMarkup(
             InlineKeyboardButton(text="Kerakli noutbuklar 💻",callback_data="noutbuk")
         ],
         [
-            InlineKeyboardButton(text="🛒",callback_data="korzinka")
+            InlineKeyboardButton(text=" 🔙 ",callback_data="menyu")
         ]
     ]
 )
@@ -34,7 +34,14 @@ oqish_ibtn=InlineKeyboardMarkup(
 ortga_ibtn=InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Back 🔙",callback_data="orqaga")
+            InlineKeyboardButton(text="Back ↩️",callback_data="orqaga")
+        ]
+    ]
+)
+ort_ibtn=InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text=" 🔙 ",callback_data="menyu")
         ]
     ]
 )

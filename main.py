@@ -1,7 +1,7 @@
 from head_fun import dp
 from aiogram import types,executor
 
-from inli_ibtn import kurs_ibtn, oqish_ibtn, ortga_ibtn
+from inli_ibtn import kurs_ibtn, oqish_ibtn, ortga_ibtn, ort_ibtn
 # from inli_ibtn import kurs_ibtn
 from key_btn import start_btn
 
@@ -92,8 +92,93 @@ async def oqish(message:types.Message):
     await message.answer(f"Sizga qaysi turdagi kurslarimiz qiziq???\nMarhamat quyidagilardan birini tanlshingiz mumkin!!! ",
                          reply_markup=oqish_ibtn)
 
+@dp.callback_query_handler(text="menyu")
+async def meny(call:types.CallbackQuery):
+    await call.message.delete()
+    await call.message.answer(f"Sizga qaysi turdagi kurslarimiz qiziq???\nMarhamat quyidagilardan birini tanlshingiz mumkin!!! ",
+                         reply_markup=oqish_ibtn)
 
 
+@dp.callback_query_handler(text="frontend")
+async def fron(call:types.CallbackQuery):
+    img=open("static/img/fron.webp",'rb')
+    text="""
+🔊 Frontend haqida umumiy ma'lumot:
+Frontend — bu veb-sayt yoki dasturiy ilovaning foydalanuvchi ko‘rishi va ishlatishi mumkin bo‘lgan qismidir. Foydalanuvchi interfeysi (UI) va foydalanuvchi tajribasi (UX) frontend orqali ta'minlanadi.
+
+Frontendni tushunish uchun quyidagilarni bilish muhim:
+
+✅ Frontend vazifalari:
+Ko‘rinishni ta’minlash: Veb-sahifaning chiroyli va tartibli ko‘rinishi.
+Interaktivlikni qo‘shish: Sahifani foydalanuvchi bilan muloqot qiladigan qilib qilish (tugmalar, shakllar va boshqalar).
+Moslashuvchan dizayn: Turli qurilmalarda (kompyuter, planshet, telefon) yaxshi ishlaydigan sahifa yaratish.
+
+👨‍💻 Frontend dasturchi nima qiladi?
+Sayt dizaynini kodga aylantiradi.
+Saytni barcha qurilmalarga moslashtiradi (responsiveness).
+JavaScript yordamida saytga funksiyalar qo‘shadi.
+Backend bilan bog‘liq bo‘lgan ma’lumotlarni foydalanuvchiga chiqaradi.
+"""
+    await call.message.delete()
+    await call.message.answer_photo(photo=img,caption=text,reply_markup=ort_ibtn)
+
+@dp.callback_query_handler(text="xacker")
+async def xac(call:types.CallbackQuery):
+    img=open("static/img/xacker.jpg",'rb')
+    text="""
+🦠 Kiberxavfsizlik haqida umumiy tushuncha
+Kiberxavfsizlik — bu axborotni, kompyuter tizimlarini va tarmoqlarni kiberhujumlardan himoya qilish bo‘yicha tadbirlar majmuidir. Kiberxavfsizlik maqsadi — axborot maxfiyligini, yaxlitligini va mavjudligini ta'minlashdir (CIA triadasi).
+
+🎯 Kiberxavfsizlikning asosiy yo‘nalishlari:
+Tarmoqlar xavfsizligi (Network Security):
+
+Tarmoq orqali ma'lumotlarning uzatilishini himoya qilish.
+Xavfli trafikni aniqlash va to‘sish uchun firewall va IDS/IPS tizimlari qo‘llanadi.
+Axborot xavfsizligi (Information Security):
+
+Ma'lumotlarning maxfiyligini, yaxlitligini va mavjudligini ta'minlash.
+Shifrlash (encryption) va autentifikatsiya usullaridan foydalaniladi.
+Veb xavfsizligi (Web Security):
+
+💸 Kiberxavfsizlik bo‘yicha kasblar:
+Etik xaker (Ethical Hacker)
+Kiberxavfsizlik bo‘yicha mutaxassis (Cybersecurity Specialist)
+Tarmoq xavfsizligi muhandisi (Network Security Engineer)
+Axborot xavfsizligi bo‘yicha analitik (Information Security Analyst)
+Malware tahlilchisi (Malware Analyst)"""
+    await call.message.delete()
+    await call.message.answer_photo(photo=img,caption=text,reply_markup=ort_ibtn)
+
+@dp.callback_query_handler(text="tillar")
+async def til(call:types.CallbackQuery):
+    img=open("static/img/engliz.jpg",'rb')
+    text="""
+📝 Ingliz tili kursining asosiy maqsadlari:
+Speaking (Suhbat qurish):
+Foydalanuvchilarni muloqot qilishga o‘rgatish. Asosiy e’tibor talaffuz va ravonlikka qaratiladi.
+
+🎧 Listening (Tinglab tushunish):
+Ingliz tilida gaplashuvchi odamlarni tushunish ko‘nikmasini rivojlantirish.
+
+Writing (Yozish):
+O‘z fikrlarini yozma shaklda ifoda qilishni o‘rgatish.
+
+🗣 Ingliz tilida sodda gaplarni tushunish va gapirish.
+Oddiy kundalik iboralarni o‘rgatish.
+Elementary (Boshlang‘ichdan yuqori):
+
+🏆 Grammatikaning asosiy qoidalari va so‘z boyligini oshirish.
+Intermediate (O‘rta):
+
+Matnlar, suhbatu maqolalarni mustaqil tushunish va muhokama qilish.
+Advanced (Yuqori):
+
+Murakkab mavzularda gapirish va yozish ko‘nikmasini rivojlantirish.
+Qo‘shimcha imkoniyatlar:
+IELTS yoki TOEFL tayyorlov kurslari:
+Akademik yoki xalqaro sertifikat olishni maqsad qilgan talabalar uchun maxsus darslar. """
+    await call.message.delete()
+    await call.message.answer_photo(photo=img,caption=text,reply_markup=ort_ibtn)
 
 
 @dp.message_handler(text=["📝 Kursga ro'yhatdan o'tish"])
