@@ -1,10 +1,11 @@
+from pyexpat.errors import messages
+
 from head_fun import dp
 from aiogram import types,executor
 
-from inli_ibtn import kurs_ibtn, oqish_ibtn, ortga_ibtn, ort_ibtn
+from inli_ibtn import kurs_ibtn, oqish_ibtn, ortga_ibtn, ort_ibtn, korzinka_ibtn
 # from inli_ibtn import kurs_ibtn
 from key_btn import start_btn
-
 
 
 @dp.message_handler(commands=["start"])
@@ -27,7 +28,11 @@ async def school_fun(message:types.Message):
 
 😇 Ha aytgancha bizada yana bir yangilik bizda IT o'quv kursimizga qatnashib turli 'sertifikatlar'imizga va ish bilan taminlashga ega bo'ling!!
     """
-    await message.answer_photo(photo=img,caption=text)
+    await message.answer_photo(photo=img,caption=text,reply_markup=korzinka_ibtn)
+
+@dp.callback_query_handler(text="uchirish")
+async def uch(call:types.CallbackQuery):
+    await call.message.delete()
 
 
 @dp.callback_query_handler(text="foun")
@@ -48,11 +53,67 @@ async def kurss(call:types.CallbackQuery):
     await call.message.delete()
     await call.message.answer(text,reply_markup=ortga_ibtn)
 
-# @dp.callback_query_handler(text="orqaga")
+@dp.callback_query_handler(text="telegram")
+async def ort_fun(call:types.CallbackQuery):
+    text="""📌 Telegram bot Telegram messenjerida ishlaydigan avtomatlashtirilgan dasturiy ta'minot bo'lib, u foydalanuvchilarga turli vazifalarni bajarishda yordam beradi. Botlar avtomatik javob berish, ma'lumot taqdim etish, interaktiv xizmatlar ko'rsatish va boshqa ko'plab vazifalarni amalga oshiradi.
+
+🗣 Telegram botlar foydalanuvchi so'rovlariga javob berish, ma'lumotlarni qayta ishlash, API lar bilan integratsiya qilish va boshqa ko'plab funktsiyalarni bajarish uchun ishlab chiqilgan. Ular foydalanuvchi bilan muloqot qilish uchun matn, rasmlar, videolar, tugmalar va boshqa interaktiv elementlarni ishlatishi mumkin.
+
+🐍 Python Telegram botlarini yaratishda keng qo'llaniladigan dasturlash tillaridan biridir. Python uchun mavjud bo'lgan kutubxonalar va ramkalar Telegram botlarini yaratishni osonlashtiradi. Ushbu kutubxonalarga pyTelegramBotAPI, python-telegram-bot va telepot kiradi. Ular botlarni yaratish, xabarlarni qayta ishlash, tugmalar va menyularni sozlash kabi vazifalarni osonlashtiradi.
+
+🗂 Telegram botlari foydalanuvchilarga turli xizmatlarni taqdim etishi mumkin, jumladan, ob-havo ma'lumotlari, yangiliklar yangilanishlari, savdo jarayonlari, o'yinlar va ko'ngilochar xizmatlar, ma'lumotlar bazasidan ma'lumotlar olish va boshqalar.
+
+🛠 Telegram bot ishlab chiquvchilari botning logikasini yaratish, foydalanuvchi interfeysi bilan ishlash, ma'lumotlar bazasi bilan integratsiya qilish va xavfsizlikni ta'minlash kabi vazifalar bilan shug'ullanadi. Shuningdek, ular botning ishlashini va foydalanuvchi tajribasini yaxshilash uchun muntazam ravishda optimallashtirish va yangilash ishlarini olib boradilar.
+
+💰 Telegram botlari nafaqat foydalanuvchilarga qulaylik yaratadi, balki bizneslar uchun ham katta foyda keltiradi. Ular mijozlar bilan avtomatlashtirilgan muloqot o'rnatish, mijozlarga xizmat ko'rsatishni yaxshilash va xarajatlarni kamaytirishga yordam beradi. Python ning qulayligi va kuchli kutubxonalari Telegram botlarini yaratishda uni ideal tanlov qiladi."""
+    await call.message.delete()
+    await call.message.answer(text,reply_markup=ortga_ibtn)
+
+
+@dp.callback_query_handler(text="python")
+async def ort_fun(call:types.CallbackQuery):
+    text="""📌 Backend Python  dasturlash tili veb-ilovalar va boshqa dasturiy tizimlarning orqa qismini yaratish va boshqarish uchun ishlatiladigan dasturiy ta'minotni ishlab chiqishni anglatadi.
+
+👨🏻‍💻 Python backend-bu mijoz tomoni (frontend) so'rovlarini ko'rib chiqadigan va ma'lumotlar bazalari bilan o'zaro aloqada bo'lgan, biznes mantig'ini bajaradigan, xavfsizlik, ma'lumotlarni qayta ishlash va boshqa funktsiyalarni ta'minlaydigan dasturlarning server tomoni.
+
+🐍 Python backend dasturlarini ishlab chiqishni osonlashtiradigan ko'plab kutubxonalar va ramkalarni taklif etadi. Backend rivojlanishi uchun ba'zi mashhur Python ramkalariga Django, Flask, Pyramid va Bottle kiradi. Ular marshrutlarni boshqarish, ma'lumotlar bazalari bilan ishlash, API ishlab chiqish va backend ishlab chiqish uchun zarur bo'lgan boshqa vazifalar uchun qulay vositalarni taqdim etadi.
+
+🗂 Python ma'lumotlar fani va ma'lumotlarni tahlil qilishda ham keng qo'llaniladi, bu esa uni katta hajmdagi ma'lumotlarni qayta ishlash va mashinani o'rganish bilan bog'liq tizimlarni backend ishlab chiqish uchun foydali qiladi.
+
+🪩 Backend Python ishlab chiquvchilari server kodini yaratish va optimallashtirish, ma'lumotlar bazasini boshqarish, so'rovlarni qayta ishlash, biznes mantig'ini amalga oshirish va ilovaning xavfsizligi va ishlashini ta'minlash bilan shug'ullanadi.
+
+📚 Backend Python Python tilining soddaligi va ekspressivligi, keng funktsionalligi va kutubxonalar va ramkalarning boy ekotizimi tufayli ko'plab ishlab chiquvchilar uchun mashhur tanlovdir."""
+    await call.message.delete()
+    await call.message.answer(text,reply_markup=ortga_ibtn)
+
+
+# @dp.callback_query_handler(text="")
 # async def ort_fun(call:types.CallbackQuery):
+#     img=open("static/img/")
 #     text=""""""
 #     await call.message.delete()
-#     await call.message.answer("Tanlang 👇")
+#     await call.message.answer_photo(photo=img,caption=text,reply_markup=ort_ibtn)
+
+
+@dp.callback_query_handler(text="noutbuk")
+async def ort_fun(call:types.CallbackQuery):
+    text="""👨🏻‍💻 Dasturlash uchun talab qilinadigan minimum noutbuk, agar yangi olmoqchi bo’lsangiz:
+
+🔸 Kami bilan Core i5 (10-avlod) yoki AMD Ryzen 5 (Core i7 bo’lsa yaxshi)
+🔸 Tezkor xotira RAM kami bilan 8GB (16 bo'lsa yaxshi)\- Asosiy Xotira SSD kami bilan 256 GB
+
+💻 Agar Apple MacBook olmoqchi bo’lsangiz va pulingiz yetarli bo’lsa:
+
+🔹 Kami bilan M1 Protsessor
+🔹 Kami bilan 8GB RAM xotira
+🔹 Kami bilan 256GB doimiy SSD xotira
+
+🖥 Agar oldingi kompyuteringiz bo’lsa uning texnik holatini quyidagilarga keltirib olishingiz maqsadga muvofiq:
+
+🔻 RAM xotira 8GB kamida;
+🔻 Agar HDD xotira bo’lsa, uni kamida 256GB SSDga almashtirish yoki HDD yoniga o’rnatish"""
+    await call.message.delete()
+    await call.message.answer(text,reply_markup=ortga_ibtn)
 
 
 @dp.callback_query_handler(text="backend")

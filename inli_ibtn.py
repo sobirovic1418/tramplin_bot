@@ -45,3 +45,10 @@ ort_ibtn=InlineKeyboardMarkup(
         ]
     ]
 )
+korzinka_ibtn=InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text=" 🗑 ",callback_data="uchirish")
+        ]
+    ]
+)
